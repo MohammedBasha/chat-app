@@ -1,0 +1,28 @@
+# Node.js
+node_modules/
+.env
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build artifacts
+build/
+dist/
+public/build/
+
+# Operating System and IDE files
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+logs/
+*.log
+
+# Sensitive files (e.g., database backups, private keys)
+*.pem
+*.key
+dump.rdb
+secrets.js
