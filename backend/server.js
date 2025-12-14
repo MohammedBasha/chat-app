@@ -9,6 +9,9 @@ const app = express();
 dotenv.config();
 const PORT = process.env.PORT || 5000;
 
+// Middleware to parse JSON requests body (req.body)
+app.use(express.json());
+
 app.get("/", (req, res) => {
     // root route http://localhost:${PORT}/
     res.send("Hello, World!!");
