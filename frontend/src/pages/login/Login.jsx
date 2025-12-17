@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Login = () => {
     const loading = false;
 
@@ -39,12 +41,13 @@ const Login = () => {
                             className="w-full input input-bordered h-10"
                         />
                     </div>
-                    <a
+                    <Link
+                        to="/signup"
                         href="#"
                         className="text-sm  hover:underline hover:text-blue-600 mt-2 inline-block"
                     >
                         {"Don't"} have an account?
-                    </a>
+                    </Link>
 
                     <div>
                         <button
