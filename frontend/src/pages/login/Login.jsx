@@ -1,10 +1,16 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import useLogin from "../../hooks/useLogin";
 
 const Login = () => {
-    const loading = false;
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+
+    const { loading, login } = useLogin();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        await login(username, password);
     };
 
     return (
@@ -26,6 +32,8 @@ const Login = () => {
                             type="text"
                             placeholder="Enter username"
                             className="w-full input input-bordered h-10"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
                         />
                     </div>
 
@@ -39,11 +47,12 @@ const Login = () => {
                             type="password"
                             placeholder="Enter Password"
                             className="w-full input input-bordered h-10"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                         />
                     </div>
                     <Link
                         to="/signup"
-                        href="#"
                         className="text-sm  hover:underline hover:text-blue-600 mt-2 inline-block"
                     >
                         {"Don't"} have an account?
