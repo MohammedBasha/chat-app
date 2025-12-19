@@ -1,17 +1,24 @@
 import Conversation from "./Conversation.jsx";
 import useGetConversations from "../../hooks/useGetConversations.js";
 import { getRandomEmoji } from "../../utils/emojis.js";
+import useConversation from "../../zustand/useConversation.js";
 
 const Conversations = () => {
     const { loading, conversations } = useGetConversations();
+    const { searchTerm } = useConversation();
+
+    const filteredConversations = conversations.filter((conv) =>
+        conv.fullName.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     return (
         <div className="py-2 flex flex-col overflow-auto">
-            {conversations.map((conversation, idx) => (
+            {filteredConversations.map((conversation, idx) => (
                 <Conversation
                     key={conversation._id}
                     conversation={conversation}
                     emoji={getRandomEmoji()}
-                    lastIdx={idx === conversations.length - 1}
+                    lastIdx={idx === filteredConversations.length - 1}
                 />
             ))}
             {loading ? (
